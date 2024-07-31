@@ -6,7 +6,7 @@ const sql = require('mssql');
 router.get('/', async (req, res) => {
 
     try {
-        const response = await sql.query`select * from BuyingInfo`
+        const response = await sql.query`SELECT * FROM BuyingInfo order by createddate desc`
         res.status(200).json(response.recordset);
     } catch (error) {
         res.status(500).json({ error: error });

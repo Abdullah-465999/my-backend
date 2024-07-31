@@ -8,10 +8,11 @@ const transInfo = require('./routes/transInfoRoute');
 const transWalletInfo = require('./routes/transWalletInforoute');
 const sellAndBuy = require('./routes/BuyAndSellRoute');
 const butterfactoryinfoRoute = require('./routes/butterfactoryinfoRoute')
+const SuperTrend = require('./routes/SuperTrend');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 1200;
+const PORT = process.env.PORT || 7000;
 
 
 const config = {
@@ -37,7 +38,7 @@ sql.connect(config).then(pool => {
 
 app.use(cors({
   credentials: true,
-  origin: 'http://45.55.97.152:1880'
+  origin: 'http://45.55.97.152:1400'
 }));
 
 app.use(express.json());
@@ -50,11 +51,10 @@ app.use('/transinfo', transInfo);
 app.use('/transwalletinfo', transWalletInfo)
 app.use('/butterfactoryinfo', butterfactoryinfoRoute)
 app.use('/buyandsell', sellAndBuy)
-
-
+app.use('/supertrend',SuperTrend)
 
 
 app.listen(PORT, () => {
 
-  console.log(`Server is running on port ${1200}`);
+  console.log(`Server is running on port ${7000}`);
 });
