@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: 'http://45.55.97.152:3400',
+    origin: 'http://45.55.97.152:5300',
     methods: ['GET', 'POST']
   }
 });
@@ -45,7 +45,7 @@ sql.connect(config).then(pool => {
 
 app.use(cors({
   credentials: true,
-  origin: 'http://45.55.97.152:3400'
+  origin: 'http://45.55.97.152:5300'
 }));
 
 app.use(express.json());
@@ -104,6 +104,3 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-module.exports = { io }
