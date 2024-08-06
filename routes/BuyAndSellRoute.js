@@ -114,7 +114,7 @@ router.delete('/dlt/:id', async (req, res) => {
         await sql.query`DELETE from TokenSellSlots where ID=${id}`;
         const users = await sql.query`SELECT * FROM TokenSellSlots`
 
-        res.status(200).json({ message: 'User deleted successfully',  users: users.recordset});
+        res.status(200).json({ message: 'User deleted successfully', users: users.recordset });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
     }
@@ -122,14 +122,16 @@ router.delete('/dlt/:id', async (req, res) => {
 
 
 
-router.get('/channelname', async (req, res) => {
+router.get('/channelnames', async (req, res) => {
     try {
-        const result = await sql.query`SELECT * FROM ChannelNames`;
-        res.status(200).json(result.recordset);
+        const Channels = await sql.query`SELECT * FROM ChannelNames`;
+        res.status(200).json(Channels.recordset);
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ error });
     }
-});
+}
+)
+
 
 
 router.put('/channel/:id', async (req, res) => {

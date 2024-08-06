@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
         request.input('ChannelName', sql.NVarChar, transaction.ChannelName);
         request.input('TotalNoOfSells', sql.TinyInt, parseInt(transaction.TotalNoOfSells));
         request.input('FeePayerPrivateAddress', sql.NVarChar, transaction.FeePayerPrivateAddress);
-        request.input('PriceTrackingFrequency', sql.TinyInt, parseInt(transaction.PriceTrackingFrequency));
+        request.input('PriceTrackingFrequency', sql.Int, parseInt(transaction.PriceTrackingFrequency));
         request.input('SupertrendSelling', sql.Bit, transaction.SupertrendSelling);
         request.input('IsJitoTrans', sql.Bit, transaction.IsJitoTrans);
         request.input('Status', sql.VarChar, transaction.Status);
@@ -100,7 +100,7 @@ router.put('/:id', async (req, res) => {
         request.input('ChannelName', sql.NVarChar, newData.ChannelName || null);
         request.input('TotalNoOfSells', sql.TinyInt, parseInt(newData.TotalNoOfSells) || 0);
         request.input('FeePayerPrivateAddress', sql.NVarChar, newData.FeePayerPrivateAddress || null);
-        request.input('PriceTrackingFrequency', sql.TinyInt, parseInt(newData.PriceTrackingFrequency) || 0);
+        request.input('PriceTrackingFrequency', sql.Int, parseInt(newData.PriceTrackingFrequency) || 0);
         request.input('SupertrendSelling', sql.Bit, newData.SupertrendSelling ? 1 : 0);
         request.input('IsJitoTrans', sql.Bit, newData.IsJitoTrans ? 1 : 0);
         request.input('Status', sql.VarChar, newData.Status || null);
